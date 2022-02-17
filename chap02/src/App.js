@@ -1,5 +1,6 @@
 
 import './../node_modules/bootstrap/dist/css/bootstrap.css';
+import TodoTemplate from './components/TodoTemplate';
 
 function App() {
   return (
@@ -8,7 +9,7 @@ function App() {
         <h1>TodoList</h1>
       </div>
       <div className='col-12 text-center'>
-
+        <TodoTemplate />
       </div>
     </div>
   );

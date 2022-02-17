@@ -1,25 +1,29 @@
 
-import React from 'react'
+import React from 'react';
 import './css/todos.css';
+import TodoListItem from './TodoListItem';
 
-function Todolist(){
+function Todolist(props) {
+    const { todoList, updateTodo, deleteTodo } = props;
 
     return (
         <div>
             <table className="table">
                 <thead>
                     <tr>
-                        <th style={{width:'10%'}}>ID</th>
+                        <th style={{ width: '10%' }}>ID</th>
                         <th>Todo</th>
-                        <th style={{width:'10%'}}>Complete</th>
-                        <th style={{width:'10%'}}>Delete</th>
+                        <th style={{ width: '10%' }}>Complete</th>
+                        <th style={{ width: '10%' }}>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    {todoList.map((item, index) => <TodoListItem todo={item} key={item.id}
+                        index={index} updateTodo={updateTodo} deleteTodo={deleteTodo} />)}
+
                 </tbody>
             </table>
         </div>
-    )
+    );
 }
 export default Todolist;
