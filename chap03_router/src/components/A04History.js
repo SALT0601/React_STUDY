@@ -9,6 +9,7 @@ const A02ProductComponent = (props) => {
     }
     const forword = () => history.goForward();
     const home = () => history.push('/');
+    //location.assign('')과 같은 명령. 
     const assign = (url) => history.push(url);
 
     return (

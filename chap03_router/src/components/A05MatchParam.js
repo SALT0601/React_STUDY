@@ -1,8 +1,8 @@
 
 import React from 'react';
 
-const A03ParamComponent = () => {
-
+const A03ParamComponent = (props) => {
+    const { match } = props;
     const data = [
         { "id": 1, "name": "Apples", "category": "Fruit", "price": 1.20, "expiry": 10 },
         { "id": 2, "name": "Bananas", "category": "Fruit", "price": 2.42, "expiry": 7 },
@@ -11,7 +11,9 @@ const A03ParamComponent = () => {
         { "id": 5, "name": "Salmon", "category": "Fish", "price": 17.93, "expiry": 2 },
         { "id": 6, "name": "Trout", "category": "Fish", "price": 12.93, "expiry": 4 }
     ];
-    
+
+    const product = data[match.params.no - 1];
+
     return (
         <div>
             <h5>Parameter Component</h5>
@@ -19,13 +21,17 @@ const A03ParamComponent = () => {
             <br />
 
             <div>
-                Id: <br/>
-                Name: <br/>
-                Location: 
+                Id: {match.params.no} <br />
+                Name: {match.params.name}<br />
+                Location:
             </div>
             <br />
-
+            <div>
+                Id; {product.id} <br></br>
+                Name; {product.name} <br></br>
+                category; {product.category} <br></br>
+            </div>
         </div>
-    )
-}
+    );
+};
 export default A03ParamComponent;

@@ -1,9 +1,15 @@
 
 // npm i query-string
 import React from 'react';
+import qs from 'query-string';
 
-const A04ArgsComponent = () => {
+const A04ArgsComponent = (props) => {
 
+    const { location } = props;
+    console.log(location);
+    //const query = location.search;
+    const query = qs.parse(location.search); //객체로 바꿔줌
+    console.log(query);
     const data = [
         { "id": 1, "name": "Apples", "category": "Fruit", "price": 1.20, "expiry": 10 },
         { "id": 2, "name": "Bananas", "category": "Fruit", "price": 2.42, "expiry": 7 },
@@ -13,6 +19,8 @@ const A04ArgsComponent = () => {
         { "id": 6, "name": "Trout", "category": "Fish", "price": 12.93, "expiry": 4 }
     ];
 
+    const product = data[Number(query.no) - 1]; //배열이라.
+
     return (
         <div>
             <h5>Argument Component</h5>
@@ -20,20 +28,26 @@ const A04ArgsComponent = () => {
             <br />
 
             <div>
-                pathname: <br/>
-                search: <br/>
-                hash: 
+                pathname: {location.pathname}<br />
+                search: {location.search}<br />
+                hash:{location.hash}
             </div>
             <br />
 
             <div>
-                Name: <br/>
-                Age: <br/>
-                Address: 
+                Name: {query.name}<br />
+                Address: {query.add}<br />
+                No: {query.no}
             </div>
             <br />
 
+            <div>
+                Id: {product.id}<br />
+                Name: {product.name}<br />
+
+            </div>
+
         </div>
-    )
-}
+    );
+};
 export default A04ArgsComponent;
